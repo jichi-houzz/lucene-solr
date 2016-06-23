@@ -158,8 +158,8 @@
 
   <property name="javac.deprecation" value="off"/>
   <property name="javac.debug" value="on"/>
-  <property name="javac.source" value="1.7"/>
-  <property name="javac.target" value="1.7"/>
+  <property name="javac.source" value="1.8"/>
+  <property name="javac.target" value="1.8"/>
   <property name="javac.args" value="-Xlint -Xlint:-deprecation -Xlint:-serial -Xlint:-options"/>
   <property name="javadoc.link" value="http://download.oracle.com/javase/7/docs/api/"/>
   <property name="javadoc.link.junit" value="http://junit.sourceforge.net/javadoc/"/>
@@ -300,7 +300,7 @@
     </condition>
   </fail>
 
-  <fail message="Minimum supported Java version is 1.7.">
+  <fail message="Minimum supported Java version is 1.8.">
     <condition>
       <not><hasmethod classname="java.lang.Throwable" method="getSuppressed"/></not>
     </condition>
@@ -356,10 +356,10 @@
   </condition>
 
   <!-- workaround for https://issues.apache.org/bugzilla/show_bug.cgi?id=53347 -->
-  <condition property="build.compiler" value="javac1.7">
+  <condition property="build.compiler" value="javac1.8">
     <and>
       <not>
-        <equals arg1="${build.java.runtime}" arg2="1.7"/>
+        <equals arg1="${build.java.runtime}" arg2="1.8"/>
       </not>
       <or>
         <antversion exactly="1.8.3" />
@@ -380,7 +380,7 @@
   <!-- for now disable doclint on JDK 8+: -->
   <condition property="javadoc.args" value="-Xdoclint:none" else="">
     <not>
-      <equals arg1="${build.java.runtime}" arg2="1.7"/>
+      <equals arg1="${build.java.runtime}" arg2="1.8"/>
     </not>
   </condition>
 
